@@ -4,9 +4,9 @@ public:
         int n = s.size();
         int m = t.size();
 
-        vector<vector<int>> dp(n+1, vector<int>(m+1, -1));
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
 
-        for (int i = 0; i <n; i++) {
+        for (int i = 0; i < n; i++) {
             dp[i][0] = 0;
         }
         for (int j = 0; j < m; j++) {
@@ -19,9 +19,8 @@ public:
                 else
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
             }
-           
         }
-         return dp[n][m];
+        return dp[n][m];
     }
 
     int longestPalindromeSubseq(string s) {
