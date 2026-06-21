@@ -4,7 +4,7 @@ public:
           vector<vector<int>> adj(numCourses);
         vector<int> indegree(numCourses,0);
 
-        for(auto &it : prerequisites){
+        for(auto it : prerequisites){
             adj[it[1]].push_back(it[0]);
             indegree[it[0]]++;
         }
