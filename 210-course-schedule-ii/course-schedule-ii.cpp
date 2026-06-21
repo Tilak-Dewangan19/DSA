@@ -1,60 +1,38 @@
 class Solution {
-private:
-    bool dfsCheck(int node, vector<int> adj[],
-                  vector<int>& vis, vector<int>& pathVis,
-                  stack<int>& st) {
-
-        vis[node] = 1;
-        pathVis[node] = 1;
-
-        for (auto it : adj[node]) {
-
-            if (!vis[it]) {
-                if (dfsCheck(it, adj, vis, pathVis, st) == true)
-                    return true;
-            }
-            else if (pathVis[it]) {
-                return true;
-            }
-        }
-
-        pathVis[node] = 0;
-        st.push(node);
-
-        return false;
-    }
-
 public:
-    vector<int> findOrder(int numCourses,
-                          vector<vector<int>>& prerequisites) {
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+          vector<vector<int>> adj(numCourses);
+        vector<int> indegree(numCourses,0);
 
-        vector<int> adj[numCourses];
-        for (auto it : prerequisites) {
+        for(auto &it : prerequisites){
             adj[it[1]].push_back(it[0]);
+            indegree[it[0]]++;
         }
+         queue<int> q;
 
-        vector<int> vis(numCourses, 0);
-        vector<int> pathVis(numCourses, 0);
+        for(int i=0;i<numCourses;i++){
+            if(indegree[i]==0)
+                q.push(i);
+        }
+    vector<int> ans;
 
-        stack<int> st;
+        while(!q.empty()){
+            int node=q.front();
+            q.pop();
+            ans.push_back(node);
 
-        
-        for (int i = 0; i < numCourses; i++) {
-
-            if (!vis[i]) {
-                if (dfsCheck(i, adj, vis, pathVis, st) == true) {
-                    return {};
-                }
+            for(auto it:adj[node]){
+                indegree[it]--;
+                if(indegree[it]==0)
+                    q.push(it);
             }
         }
-
-        vector<int> ans;
-
-        while (!st.empty()) {
-            ans.push_back(st.top());
-            st.pop();
+        if(ans.size() == numCourses){
+            return ans;
         }
-
-        return ans;
+        else{
+            return {};
+        }
+        
     }
 };
