@@ -15,13 +15,8 @@ public:
             return head;
 
         }
-        // ListNode* newNode = reverseList(head->next);
-        // ListNode* front = head->next;
-        // front->next = head;
-        // head->next = nullptr;
-
-        // return newNode;
-     
+       
+     // ITERATIVE APPROACH
         // ListNode* prev = NULL;
         // ListNode* curr = head;
 
@@ -32,6 +27,8 @@ public:
         //     curr = nextnode;
         // }
         // return prev;
+
+        // RECURSIVE APPROACH
         ListNode* newhead = reverseList(head->next);
         ListNode* front = head->next;
         front->next = head;
