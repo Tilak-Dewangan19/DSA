@@ -22,15 +22,20 @@ public:
 
         // return newNode;
      
-        ListNode* prev = NULL;
-        ListNode* curr = head;
+        // ListNode* prev = NULL;
+        // ListNode* curr = head;
 
-        while(curr != NULL){
-            ListNode* nextnode = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = nextnode;
-        }
-        return prev;
+        // while(curr != NULL){
+        //     ListNode* nextnode = curr->next;
+        //     curr->next = prev;
+        //     prev = curr;
+        //     curr = nextnode;
+        // }
+        // return prev;
+        ListNode* newhead = reverseList(head->next);
+        ListNode* front = head->next;
+        front->next = head;
+        head->next = NULL;
+        return newhead;
     }
 };
