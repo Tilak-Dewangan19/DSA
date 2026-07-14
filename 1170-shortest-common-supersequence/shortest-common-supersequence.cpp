@@ -5,7 +5,7 @@ public:
         int n = s.size();
         int m = t.size();
 
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
 
         for (int i = 0; i < n; i++) {
             dp[i][0] = 0;
