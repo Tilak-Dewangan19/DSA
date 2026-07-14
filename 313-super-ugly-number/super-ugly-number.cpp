@@ -10,12 +10,12 @@ public:
         for(int i = 1; i< n; i++){
                 long long next = LLONG_MAX;
                 for(int j = 0; j < k; j++){
-                    next = min(next, ugly[ptr[j]] * primes[j]);
+                    next = min(next, ugly[ptr[j]] *1LL* primes[j]);
                 }
                 ugly[i] = next;
 
                 for(int j = 0; j <k ;j++){
-                    if(next == ugly[ptr[j]] * primes[j]){
+                    if(next == ugly[ptr[j]] *1LL* primes[j]){
                             ptr[j]++;
                     }
                 }
