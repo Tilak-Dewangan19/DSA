@@ -5,8 +5,9 @@ public:
         int lsum = 0, rsum = 0, sum = 0, maxsum =0;
         for(int i= 0; i<k; i++){
             lsum = lsum + cardPoints[i];
-             maxsum = lsum;
+            
         }
+         maxsum = lsum;
        
 
         int rindex = n-1;
