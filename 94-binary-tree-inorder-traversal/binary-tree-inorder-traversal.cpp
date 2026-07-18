@@ -37,7 +37,7 @@ public:
                 node = node->left;
             }
             else{
-                if(st.empty() == true){
+                if(st.empty()){
                     break;
                 }
                 node = st.top();
